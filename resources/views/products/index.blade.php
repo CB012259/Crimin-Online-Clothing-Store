@@ -40,7 +40,8 @@
                     </tbody>
                 </table>
             </div>
-            <br><a href="{{ url('/admin') }}" class="text-blue-500 hover:underline">Back</a>
+            <br><button onclick="history.back()" class="btn btn-primary">Back</button>
+
 
         </div>
     </div>

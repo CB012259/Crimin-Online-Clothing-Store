@@ -59,8 +59,9 @@
             </form>
 
         </div>
-    </div>
-    <a href="{{ url('/users') }}" class="text-blue-500 hover:underline">Back</a>
+    </div><br>
+    <button onclick="history.back()" class="btn btn-primary">Back</button>
+
 
 </div>
 </body>

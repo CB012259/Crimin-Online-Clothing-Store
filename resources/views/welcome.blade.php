@@ -97,18 +97,25 @@
             // Auto-slide
             setInterval(nextSlide, 3000);
         });
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+        var menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        });
     </script>
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body class="bg-gray-100 font-sans">
 <header class="bg-amber-200 text-black p-4">
 
-    <nav class="flex justify-between items-center py-4 px-6  text-white">
+<nav class="bg-800 text-white py-4 px-6">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo Section -->
         <div class="flex items-center">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-30 h-20 object-contain" />
-
-            <ul class="flex ml-6 text-black space-x-6" >
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-20 h-16 object-contain" />
+            <ul class="hidden md:flex ml-6 text-black space-x-6">
                 <li><a href="#t-shirts" class="hover:underline">T-shirts</a></li>
                 <li><a href="#bottoms" class="hover:underline">Bottoms</a></li>
                 <li><a href="#accessories" class="hover:underline">Accessories</a></li>
@@ -118,7 +125,14 @@
             </ul>
         </div>
 
-        <div class="login-menu">
+        <!-- Toggle Button and Login Section -->
+        <div class="flex items-center">
+            <!-- Mobile menu toggle button -->
+            <button id="menu-toggle" class="md:hidden block focus:outline-none text-black">
+                <i class="fa fa-bars fa-lg"></i>
+            </button>
+
+            <!-- Login Menu -->
             @if (Route::has('login'))
                 <div class="flex items-center">
                     @auth
@@ -137,7 +151,6 @@
                         <a href="{{ route('login') }}" class="text-black hover:text-white hover:bg-black px-3 py-2 rounded-md transition duration-300">
                             Log in
                         </a>
-
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="text-black hover:text-white hover:bg-black px-3 py-2 rounded-md transition duration-300">
                                 Register
@@ -147,7 +160,21 @@
                 </div>
             @endif
         </div>
-    </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+            <ul class="text-black space-y-4">
+                <li><a href="#t-shirts" class="hover:underline">T-shirts</a></li>
+                <li><a href="#bottoms" class="hover:underline">Bottoms</a></li>
+                <li><a href="#accessories" class="hover:underline">Accessories</a></li>
+                <li><a href="/Customer-Support" class="hover:underline">Customer Support</a></li>
+                <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
+                <li><a href="/Places" class="hover:underline">Places</a></li>
+            </ul>
+        </div>
+</nav>
+
 
     <span></span>
 
@@ -259,8 +286,6 @@
                     <img src="https://th.bing.com/th/id/OIG2.O_JTNbcNprOeIEeYEtVm?pid=ImgGn" alt="Graphic Tee" class="w-20 h-20 rounded-lg">
                     <span>Graphic Tee</span>
                 </li>
-
-
                 <li class="flex items-center space-x-4" data-category="t-shirts" data-price="0-25" data-color="blue" data-size="m" data-gender="unisex" data-brand="brand1" data-material="cotton">
                     <img src="https://th.bing.com/th/id/OIG3.2y4KkweVDoChoq.sPRBA?pid=ImgGn" alt="Tank Top" class="w-20 h-20 rounded-lg">
                     <span>Tank Top</span>
@@ -309,13 +334,7 @@
 
             </ul>
         </div>
-
-
     </section>
-
-
-
-
 </main>
 
 <footer class="bg-gray-900 text-white text-center p-4">

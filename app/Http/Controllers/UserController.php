@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User; //import this
+use App\Models\User; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
-//import this for password hashing
+
 
 class UserController extends Controller
 {
@@ -39,7 +39,7 @@ class UserController extends Controller
                 'full_name' => 'required|string',
                 'email' => 'required|email|unique:users',
                 'phone_number' => 'required',
-                'password' => 'required|confirmed|min:4|max:8',
+                'password' => 'required|confirmed|min:8',
             ]);
             try {
                 // register user here
@@ -65,31 +65,38 @@ class UserController extends Controller
     }
 
     public function EditUser(Request $request)
-    {
-        if (auth()->user()->role == 'admin') {
-            // perform form validation here
-            $request->validate([
-                'user_id' => 'required|exists:users,id',
-                'full_name' => 'required|string',
-                'email' => 'required|email|unique:users,email,' . $request->user_id,
-                'phone_number' => 'required|string',
+{
+    if (auth()->user()->role == 'admin') {
+        // Perform form validation
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $request->user_id,
+            'phone_number' => 'required|string',
+        ]);
+
+        try {
+            $update_user = User::where('id', $request->user_id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
             ]);
 
-            try {
-                $update_user = User::where('id', $request->user_id)->update([
-                    'full_name' => $request->full_name,
-                    'email' => $request->email,
-                    'phone_number' => $request->phone_number,
-                ]);
-
+            // Check if any rows were updated
+            if ($update_user > 0) {
                 return redirect('/users')->with('success', 'User Updated Successfully');
-            } catch (\Exception $e) {
-                return redirect('/edit/user/' . $request->user_id)->with('fail', $e->getMessage());
+            } else {
+                return redirect('/edit/user/' . $request->user_id)->with('fail', 'User update failed or no changes made.');
             }
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        } catch (\Exception $e) {
+            Log::error('User update failed: ' . $e->getMessage());
+            return redirect('/edit/user/' . $request->user_id)->with('fail', 'An error occurred: ' . $e->getMessage());
         }
+    } else {
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
+}
+
 
 
     public function loadEditForm($id){

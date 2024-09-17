@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel 11 Crud</title>
+    <title>User Table</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -54,8 +54,9 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    <a href="{{ url('/admin') }}" class="text-blue-500 hover:underline">Back</a>
+    </div> <br>
+    <button onclick="history.back()" class="btn btn-primary">Back</button>
+
 </div>
 </body>
 </html>
