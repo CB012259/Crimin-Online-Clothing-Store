@@ -22,7 +22,11 @@ class ProductController extends Controller
 
         return view('products.index', compact('products'));
     }
-
+    public function showWelcomePage()
+    {
+        $products = Product::all();
+        return view('welcome', compact('products'));
+    }
     /**
      * Show the form for creating a new resource.
      *
