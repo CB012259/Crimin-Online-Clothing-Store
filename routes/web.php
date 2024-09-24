@@ -55,3 +55,4 @@ Route::patch('/products/{product}', [ProductController::class, 'update'])->name(
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 Route::get('/', [ProductController::class, 'showWelcomePage'])->name('welcome');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');

@@ -1,5 +1,9 @@
 @extends('layout.app')
-
+<head>
+    <title>
+        Edit Product Details
+    </title>
+</head>
 @section('content')
     <div class="container mx-auto py-8">
 

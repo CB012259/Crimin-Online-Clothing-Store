@@ -43,12 +43,37 @@ class ProductController extends Controller
      * @param  StoreProductRequest  $request
      * @return RedirectResponse
      */
-    public function store(StoreProductRequest $request): RedirectResponse
-    {
-        Product::create($request->validated());
-
-        return redirect()->route('products.index');
-    }
+    
+     
+     public function store(StoreProductRequest $request) : RedirectResponse
+     {
+         $request->validate([
+             'name' => 'required|string|max:255',
+             'description' => 'nullable|string',
+             'price' => 'required|numeric',
+             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+         ]);
+     
+         $product = new Product();
+         $product->name = $request->name;
+         $product->description = $request->description;
+         $product->price = $request->price;
+     
+         if ($request->hasFile('image')) {
+             if ($request->file('image')->isValid()) {
+                 $imagePath = $request->file('image')->store('images', 'public');
+                 $product->image_url = $imagePath;
+             } else {
+                 \Log::error('Uploaded file is not valid.');
+             }
+         } else {
+             \Log::error('No file found in the request.');
+         }
+     
+         $product->save();
+     
+         return redirect()->route('products.index')->with('success', 'Product created successfully.');
+     }
 
     /**
      * Show the form for editing the specified resource.
@@ -86,5 +111,10 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index');
+    }
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.show', compact('product'));
     }
 }
