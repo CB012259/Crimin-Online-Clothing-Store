@@ -22,6 +22,7 @@
                         <th class="py-2 px-4 border-b">Name</th>
                         <th class="py-2 px-4 border-b">Description</th>
                         <th class="py-2 px-4 border-b">Price</th>
+                        <th class="py-2 px-4 border-b">Stock</th>
                         <th class="py-2 px-4 border-b">Actions</th>
                     </tr>
                     </thead>
@@ -38,6 +39,7 @@
                             <td class="py-2 px-4 border-b">{{ $product->name }}</td>
                             <td class="py-2 px-4 border-b">{{ $product->description }}</td>
                             <td class="py-2 px-4 border-b">{{ $product->price }}</td>
+                            <td class="py-2 px-4 border-b">{{ $product->stock_quantity}}</td>
                             <td class="py-2 px-4 border-b">
                                 <a href="{{ route('products.edit', $product) }}" class="text-blue-500 hover:underline">Edit</a>
                                 <br>

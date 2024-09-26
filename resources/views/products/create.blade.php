@@ -33,6 +33,11 @@
                 <input type="file" name="image" id="image" accept="image/*"
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
+            <div class="mb-4">
+                <label for="stock_quantity" class="block text-sm font-medium text-gray-700">Stock Quantity:</label>
+                <input type="number" name="stock_quantity" id="stock_quantity" value="{{ old('stock_quantity') }}" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
             <div class="flex items-center">
                 <button type="submit"
                         class="inline-block bg-blue-500 text-black px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">

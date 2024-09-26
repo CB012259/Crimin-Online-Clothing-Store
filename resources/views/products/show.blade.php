@@ -9,6 +9,7 @@
             <h1 class="text-2xl font-semibold">{{ $product->name }}</h1>
             <p class="text-gray-600">{{ $product->description }}</p>
             <p class="text-gray-900 font-bold">${{ $product->price }}</p>
+            <p class="text-gray-600">Stock: {{ $product->stock_quantity }}</p>
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -52,12 +53,14 @@ class ProductController extends Controller
              'description' => 'nullable|string',
              'price' => 'required|numeric',
              'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+              'stock_quantity' => 'required|integer',
          ]);
      
          $product = new Product();
          $product->name = $request->name;
          $product->description = $request->description;
          $product->price = $request->price;
+         $product->stock_quantity = $request->stock_quantity;
      
          if ($request->hasFile('image')) {
              if ($request->file('image')->isValid()) {
@@ -93,11 +96,25 @@ class ProductController extends Controller
      * @param  Product  $product
      * @return RedirectResponse
      */
-    public function update(UpdateProductReques $request, Product $product): RedirectResponse
+    public function update(UpdateProductReques $request, Product $product) : RedirectResponse
     {
-        $product->update($request->validated());
-
-        return redirect()->route('products.index');
+        $data = $request->validated();
+    
+        if ($request->hasFile('image')) {
+            // Handle the image upload
+            $imagePath = $request->file('image')->store('images', 'public');
+            $data['image_url'] = $imagePath;
+    
+            // Optionally, delete the old image
+            if ($product->image_url) {
+                Storage::disk('public')->delete($product->image_url);
+            }
+        }
+    
+        $product->update($data);
+    
+        return redirect()->route('products.index')
+                         ->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -106,12 +123,19 @@ class ProductController extends Controller
      * @param  Product  $product
      * @return RedirectResponse
      */
-    public function destroy(Product $product): RedirectResponse
-    {
-        $product->delete();
-
-        return redirect()->route('products.index');
+    public function destroy(Product $product) : RedirectResponse
+{
+    // Delete the image file if it exists
+    if ($product->image_url) {
+        Storage::disk('public')->delete($product->image_url);
     }
+
+    // Delete the product record from the database
+    $product->delete();
+
+    return redirect()->route('products.index')
+                     ->with('success', 'Product deleted successfully.');
+}
     public function show($id)
     {
         $product = Product::findOrFail($id);
