@@ -55,8 +55,7 @@
                     </tbody>
                 </table>
             </div>
-            <br><button onclick="history.back()" class="btn btn-primary">Back</button>
-
+            <br><a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Back</a>
 
         </div>
     </div>

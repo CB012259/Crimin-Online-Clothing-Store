@@ -14,6 +14,7 @@
             <li><a href="#bottoms" class="hover:underline">Bottoms</a></li>
             <li><a href="#accessories" class="hover:underline">Accessories</a></li>
             <li><a href='/Customer-Support' class="hover:underline">Customer Support</a></li>
+            <li><a href="/Size" class="hover:underline">Size Chart</a></li>
             <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
 
             <li><a href="/Places" class="hover:underline">Places</a></li>

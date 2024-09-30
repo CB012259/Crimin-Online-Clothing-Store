@@ -121,6 +121,7 @@
                 <li><a href="#accessories" class="hover:underline">Accessories</a></li>
                 <li><a href="/Customer-Support" class="hover:underline">Customer Support</a></li>
                 <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
+                <li><a href="/Size" class="hover:underline">Size Chart</a></li>
                 <li><a href="/Places" class="hover:underline">Places</a></li>
             </ul>
         </div>
@@ -141,6 +142,12 @@
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 USER
                             </a>
+                            <a
+                            href="{{ route('cart') }}"
+                            class="text-black hover:text-white hover:bg-black px-3 py-2 rounded-md transition duration-300"
+                        ><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            View Cart
+                        </a>
                         @else
                             <a href="{{ url('/home') }}" class="text-black hover:text-white hover:bg-black px-3 py-2 rounded-md transition duration-300">
                                 <i class="fa fa-user" aria-hidden="true"></i>
@@ -340,8 +347,10 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     @foreach($products as $product)
         <a href="{{ route('products.show', $product->id) }}" class="bg-white p-4 rounded-lg shadow-md block">
-            <img src="{{ asset('storage/' . $product->image_url) }}" class="w-full h-48 object-cover rounded-t-lg">
-            <div class="p-4">
+        <div class="flex justify-center">
+            <img src="{{ asset('storage/' . $product->image_url) }}" class="w-48 h-60 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain rounded-t-lg">
+        </div>
+        <div class="p-4">
                 <h3 class="text-lg font-semibold">{{ $product->name }}</h3>
                 <p class="text-gray-600">{{ $product->description }}</p>
                 <p class="text-gray-900 font-bold">${{ $product->price }}</p>

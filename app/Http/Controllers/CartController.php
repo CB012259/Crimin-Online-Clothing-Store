@@ -1,57 +1,59 @@
 <?php
+// CartController.php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function index()
     {
-        $cart = session()->get('cart');
-        return view('cart.index', compact('cart'));
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('message', 'Please login to add items to your cart.');
+        }
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        return view('cart', compact('cartItems'));
     }
 
-    public function addToCart(Request $request)
+    public function add($id)
     {
-        $productId = $request->input('product_id');
-        $product = Product::find($productId);
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You need to be logged in to add items to the cart.');
+        }
+
+        $product = Product::find($id);
 
         if (!$product) {
-            return redirect()->route('cart.index')->with('error', 'Product not found!');
+            return redirect()->back()->with('error', 'Product not found.');
         }
 
-        // Add product to cart session
-        $cart = session()->get('cart');
-        if (!$cart) {
-            $cart = [
-                $productId => [
-                    'name' => $product->name,
-                    'price' => $product->price,
-                    'quantity' => 1,
-                ]
-            ];
+        $cartItem = Cart::where('user_id', Auth::id())
+                        ->where('product_id', $id)
+                        ->first();
+
+        if ($cartItem) {
+            // Update quantity if the item is already in the cart
+            $cartItem->quantity += 1;
+            $cartItem->save();
         } else {
-            if (isset($cart[$productId])) {
-                $cart[$productId]['quantity']++;
-            } else {
-                $cart[$productId] = [
-                    'name' => $product->name,
-                    'price' => $product->price,
-                    'quantity' => 1,
-                ];
-            }
+            // Create a new cart item
+            Cart::create([
+                'user_id' => Auth::id(),
+                'product_id' => $id,
+                'quantity' => 1,
+                'name' => $product->name,
+                'image' => $product->image_url,
+                'price' => $product->price,
+                'description' => $product->description,
+                'Availability' => $product->stock_quantity,
+            ]);
         }
 
-        session()->put('cart', $cart);
-
-        return redirect()->route('cart.index')->with('success', 'Product added to cart successfully!');
-    }
-
-    public function clearCart()
-    {
-        session()->forget('cart');
-        return redirect()->route('cart.index')->with('success', 'Cart cleared successfully!');
+        return redirect()->route('cart');
     }
 }

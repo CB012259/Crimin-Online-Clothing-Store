@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -18,11 +19,15 @@ Route::get('/Customer-Support', function () {
 });Route::get('/Places', function () {
     return view('Places');
 });
+Route::get('/Size', function () {
+    return view('size');
+});
 Route::get('/admin',[AdminController::class ,'admin'])->middleware('auth','admin')->name('admin.dashboard');
 Route::get('/home',[AdminController::class ,'admin']);
 Route::get('/login',[LoginController::class ,'login'])->name('login');
 Route::get('/logout',[LoginController::class ,'logout'])->name('logout');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -56,3 +61,5 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy'])->nam
 
 Route::get('/', [ProductController::class, 'showWelcomePage'])->name('welcome');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
