@@ -38,6 +38,45 @@
                 <input type="number" name="stock_quantity" id="stock_quantity" value="{{ old('stock_quantity') }}" required
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
+            <div class="mb-4">
+    <label for="size" class="block text-sm font-medium text-gray-700">Size:</label>
+    <select id="size" name="size" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    <option value="" disabled selected>Select</option>
+    <option value="all">All</option>
+        <option value="s">S</option>
+        <option value="m">M</option>
+        <option value="l">L</option>
+        <option value="xl">XL</option>
+    </select>
+</div>
+<div class="mb-4">
+                <label for="category" class="block text-sm font-medium text-gray-700">Color:</label>
+                <input type="text" name="color" id="color" value="{{ old('color') }}" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="category" class="block text-sm font-medium text-gray-700">Category:</label>
+                <input type="text" name="category" id="category" value="{{ old('category') }}" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="gender" class="block text-sm font-medium text-gray-700">Gender:</label>
+                <input type="text" name="gender" id="gender" value="{{ old('gender') }}" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="brand" class="block text-sm font-medium text-gray-700">Brand:</label>
+                <input type="text" name="brand" id="brand" value="{{ old('brand') }}" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+                <label for="material" class="block text-sm font-medium text-gray-700">Material:</label>
+                <input type="text" name="material" id="material" value="{{ old('material') }}" required
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
             <div class="flex items-center">
                 <button type="submit"
                         class="inline-block bg-blue-500 text-black px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">

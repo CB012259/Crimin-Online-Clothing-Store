@@ -54,6 +54,12 @@ class ProductController extends Controller
              'price' => 'required|numeric',
              'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
               'stock_quantity' => 'required|integer',
+              'color' => 'required|string|max:255',
+            'size' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
+            'brand' => 'required|string|max:255',
+            'material' => 'required|string|max:255',
          ]);
      
          $product = new Product();
@@ -61,7 +67,12 @@ class ProductController extends Controller
          $product->description = $request->description;
          $product->price = $request->price;
          $product->stock_quantity = $request->stock_quantity;
-     
+        $product->color = $request->color;
+        $product->size = $request->size;
+        $product->category = $request->category;
+        $product->gender = $request->gender;
+        $product->brand = $request->brand;
+        $product->material = $request->material;
          if ($request->hasFile('image')) {
              if ($request->file('image')->isValid()) {
                  $imagePath = $request->file('image')->store('images', 'public');

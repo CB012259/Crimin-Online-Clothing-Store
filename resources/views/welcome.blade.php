@@ -300,47 +300,6 @@
             </ul>
         </div>
 
-        <div id="bottoms" class="bg-white p-6 rounded-lg shadow-md mb-4">
-            <h3 class="text-xl font-semibold mb-2">Bottoms</h3>
-            <p class="mb-4">Pants, Shorts, Skirts, Dresses</p>
-            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <li class="flex items-center space-x-4" data-category="bottoms" data-price="50-100" data-color="blue" data-size="m" data-gender="unisex" data-brand="brand1" data-material="denim">
-                    <img src="https://th.bing.com/th/id/OIG3.LNsRDsO62HiEiwLVKOn3?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Jeans" class="w-20 h-20 rounded-lg">
-                    <span>Jeans</span>
-                </li>
-                <li class="flex items-center space-x-4" data-category="bottoms" data-price="25-50" data-color="khaki" data-size="l" data-gender="male" data-brand="brand2" data-material="cotton">
-                    <img src="https://th.bing.com/th/id/OIG2.PKRkAUXNyUZfzjMO6d1h?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Chino Pants" class="w-20 h-20 rounded-lg">
-                    <span>Chino Pants</span>
-                </li>
-                <li class="flex items-center space-x-4" data-category="bottoms" data-price="25-50" data-color="green" data-size="xl" data-gender="male" data-brand="brand3" data-material="cotton">
-                    <img src="https://th.bing.com/th/id/OIG2.OfysDeXHER2Mr5xAMDn1?pid=ImgGn" alt="Cargo Shorts" class="w-20 h-20 rounded-lg">
-                    <span>Cargo Shorts</span>
-                </li>
-
-
-            </ul>
-        </div>
-
-        <div id="accessories" class="bg-white p-6 rounded-lg shadow-md mb-4">
-            <h3 class="text-xl font-semibold mb-2">Accessories</h3>
-            <p class="mb-4">Bags, Hats, Belts, Scarves</p>
-            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <li class="flex items-center space-x-4" data-category="accessories" data-price="50-100" data-color="black" data-gender="unisex" data-brand="brand1" data-material="leather">
-                    <img src="https://th.bing.com/th/id/OIG2.uzVgPk7MaRq11P3ymt4b?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Leather Belt" class="w-20 h-20 rounded-lg">
-                    <span>Leather Belt</span>
-                </li>
-                <li class="flex items-center space-x-4" data-category="accessories" data-price="25-50" data-color="blue" data-gender="unisex" data-brand="brand2" data-material="cotton">
-                    <img src="https://th.bing.com/th/id/OIG3.wc4bcNzR7ExjU5CLDU2a?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Baseball Cap" class="w-20 h-20 rounded-lg">
-                    <span>Baseball Cap</span>
-                </li>
-                <li class="flex items-center space-x-4" data-category="accessories" data-price="25-50" data-color="red" data-gender="unisex" data-brand="brand3" data-material="wool">
-                    <img src="https://th.bing.com/th/id/OIG4.yWqR41OyjP3sV9T.gqRU?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Beanie" class="w-20 h-20 rounded-lg">
-                    <span>Beanie</span>
-                </li>
-
-
-            </ul>
-        </div>
 
     </section>
     <section id="products" class="p-6">

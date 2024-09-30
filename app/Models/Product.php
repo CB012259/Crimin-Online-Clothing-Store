@@ -15,5 +15,11 @@ class Product extends Model
         'price',
         'image_url',
         'stock_quantity',
+        'color',
+        'size',
+        'category',
+        'gender',
+        'brand',
+        'material',
     ];
 }
