@@ -28,6 +28,12 @@
                     <a href="{{ route('admin.reviews.index') }}" class="inline-block px-4 py-2 bg-blue-500 text-black font-semibold text-sm rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
                     Manage Reviews
                 </a>
+                <a href="{{ route('admin.subscribers') }}" class="inline-block px-4 py-2 bg-blue-500 text-black font-semibold text-sm rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    View Subscribers
+                </a>
+                <a href="{{ route('promotions.index') }}" class="inline-block px-4 py-2 bg-blue-500 text-black font-semibold text-sm rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Manage Promotions
+                </a>
                 </div>
             </div>
         </div>

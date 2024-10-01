@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Question;
+use App\Models\Subscriber;
 use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
@@ -22,5 +23,9 @@ class AdminController extends Controller
         $questions = Question::all();
         return view('questions', compact('questions'));
     }
-
+    public function subscribe()
+    {
+        $subscribers = Subscriber::all();
+        return view('subscribers', compact('subscribers'));
+    }
 }

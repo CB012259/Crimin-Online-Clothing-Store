@@ -10,6 +10,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CustomerSupportController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\PromotionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -74,3 +76,14 @@ Route::post('/questions', [CustomerSupportController::class, 'storeQuestion'])->
 
 Route::post('/reviews', [CustomerSupportController::class, 'storeReview'])->name('reviews.store');
 Route::get('/products/{id}', [CustomerSupportController::class, 'showProduct'])->name('products.show');
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+Route::get('/admin/subscribers', [AdminController::class, 'subscribe'])->name('admin.subscribers')->middleware('auth', 'admin');
+Route::delete('/subscribers/{id}', [SubscriptionController::class, 'destroy'])->name('subscribers.destroy')->middleware('auth', 'admin');
+
+
+
+Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index');
+Route::get('/promotions/create', [PromotionController::class, 'create'])->name('promotions.create')->middleware('auth', 'admin');
+Route::post('/promotions', [PromotionController::class, 'store'])->name('promotions.store')->middleware('auth', 'admin');
+Route::get('/Promotions', [PromotionController::class, 'show'])->name('welcome');
+Route::delete('/promotions/{promotion}', [PromotionController::class, 'destroy'])->name('promotions.destroy')->middleware('auth', 'admin');

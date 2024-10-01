@@ -11,11 +11,11 @@
 <header class="bg-gray-900 text-white p-4">
     <nav>
         <ul class="flex justify-center space-x-6 m-4">
-            <li><a href="/" class="hover:underline">Home</a></li>
-            <li><a href='/Customer-Support' class="hover:underline">Customer Support</a></li>
-            <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
-            <li><a href="/Size" class="hover:underline">Size Chart</a></li>
-            <li><a href="/Places" class="hover:underline">Places</a></li>
+            <li><a href="/" class="{{ request()->is('/') ? 'underline font-bold' : 'hover:underline' }}">Home</a></li>
+            <li><a href="/Customer-Support" class="{{ request()->is('Customer-Support') ? 'underline font-bold' : 'hover:underline' }}">Customer Support</a></li>
+            <li><a href="/Size" class="{{ request()->is('Size') ? 'underline font-bold' : 'hover:underline' }}">Size Chart</a></li>
+            <li><a href="/Promotions" class="{{ request()->is('Promotions') ? 'underline font-bold' : 'hover:underline' }}">Promotions</a></li>
+            <li><a href="/Places" class="{{ request()->is('Places') ? 'underline font-bold' : 'hover:underline' }}">Places</a></li>
         </ul>
         <div class="login_menu">
             <ul>

@@ -169,13 +169,13 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden">
             <ul class="text-black space-y-4">
-                <li><a href="#t-shirts" class="hover:underline">T-shirts</a></li>
-                <li><a href="#bottoms" class="hover:underline">Bottoms</a></li>
-                <li><a href="#accessories" class="hover:underline">Accessories</a></li>
-                <li><a href="/Customer-Support" class="hover:underline">Customer Support</a></li>
-                <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
-                <li><a href="/Places" class="hover:underline">Places</a></li>
-            </ul>
+            <ul class="flex justify-center space-x-6 m-4">
+            <li><a href="/" class="{{ request()->is('/') ? 'underline font-bold' : 'hover:underline' }}">Home</a></li>
+            <li><a href="/Customer-Support" class="{{ request()->is('Customer-Support') ? 'underline font-bold' : 'hover:underline' }}">Customer Support</a></li>
+            <li><a href="/Size" class="{{ request()->is('Size') ? 'underline font-bold' : 'hover:underline' }}">Size Chart</a></li>
+            <li><a href="/Promotions" class="{{ request()->is('Promotions') ? 'underline font-bold' : 'hover:underline' }}">Promotions</a></li>
+            <li><a href="/Places" class="{{ request()->is('Places') ? 'underline font-bold' : 'hover:underline' }}">Places</a></li>
+        </ul> 
         </div>
 </nav>
 
