@@ -63,7 +63,36 @@
                     @csrf
                     <button type="submit" class="btn btn-secondary w-full md:w-auto">View Cart</button>
                 </form>
+                <div class="mt-8">
+                    <h2 class="text-xl font-bold mb-4">Leave a Review</h2>
+                    <form action="{{ route('reviews.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="product_name" value="{{ $product->name }}">
+                        <div class="mb-4">
+                            <label for="review" class="block text-sm font-medium text-gray-700">Your Review:</label>
+                            <textarea id="review" name="review" rows="4" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Write your review here..." required></textarea>
+                        </div>
+                        <div class="flex items-end">
+                            <button type="submit" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit Review</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+            <div class="mt-8">
+                    <h2 class="text-xl font-bold mb-4">Reviews</h2>
+                    @if($reviews->isEmpty())
+                        <p class="text-gray-600">No reviews yet.</p>
+                    @else
+                        @foreach($reviews as $review)
+                            <div class="mb-4">
+                                <p class="text-gray-900 font-bold">{{ $review->product_name }}</p>
+                                <p class="text-gray-600">{{ $review->review }}</p>
+                                <p class="text-gray-500 text-sm">{{ $review->created_at->format('F j, Y, g:i a') }}</p>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
         </div>
     </div>
 </div>

@@ -25,6 +25,9 @@
                     <a href="{{ route('admin.questions') }}" class="inline-block px-4 py-2 bg-blue-500 text-black font-semibold text-sm rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
                     View Questions from All Users
                     </a>
+                    <a href="{{ route('admin.reviews.index') }}" class="inline-block px-4 py-2 bg-blue-500 text-black font-semibold text-sm rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Manage Reviews
+                </a>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CustomerSupportController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,7 +52,10 @@ Route::get('/edit/{id}',[UserController::class,'loadEditForm'])->middleware('aut
 Route::get('/delete/{id}',[UserController::class,'deleteUser'])->middleware('auth','admin');
 
 Route::post('/edit/user',[UserController::class,'EditUser'])->middleware('auth','admin')->name('EditUser');
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/reviews', [ReviewController::class, 'index'])->name('admin.reviews.index');
+    Route::delete('/admin/reviews/{review}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
+});
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
@@ -67,3 +71,6 @@ Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
 Route::get('/', [ProductController::class, 'welcome'])->name('welcome');
 Route::post('/questions', [CustomerSupportController::class, 'storeQuestion'])->name('questions.store');
+
+Route::post('/reviews', [CustomerSupportController::class, 'storeReview'])->name('reviews.store');
+Route::get('/products/{id}', [CustomerSupportController::class, 'showProduct'])->name('products.show');
