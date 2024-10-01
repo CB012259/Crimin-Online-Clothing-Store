@@ -152,4 +152,41 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('products.show', compact('product'));
     }
+    
+public function welcome(Request $request)
+{
+    $query = Product::query();
+
+    if ($request->has('category') && $request->category != '') {
+        $query->where('category', $request->category);
+    }
+    if ($request->has('size') && $request->size != '') {
+        $query->where('size', $request->size);
+    }
+    if ($request->has('color') && $request->color != '') {
+        $query->where('color', $request->color);
+    }
+    if ($request->has('gender') && $request->gender != '') {
+        $query->where('gender', $request->gender);
+    }
+    if ($request->has('brand') && $request->brand != '') {
+        $query->where('brand', $request->brand);
+    }
+    if ($request->has('material') && $request->material != '') {
+        $query->where('material', $request->material);
+    }
+    if ($request->has('price') && $request->price != 'all') {
+        $priceRange = explode('-', $request->price);
+        if (count($priceRange) == 2) {
+            $query->whereBetween('price', [$priceRange[0], $priceRange[1]]);
+        } elseif ($request->price == '200') {
+            $query->where('price', '>=', 200);
+        }
+    }
+
+
+    $products = $query->get();
+
+    return view('welcome', compact('products'));
+}
 }

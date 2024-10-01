@@ -1,4 +1,9 @@
 <head>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>
         Size Chart
     </title>
@@ -56,7 +61,7 @@
 
 
 </header>
-<x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Size Chart') }}
@@ -280,4 +285,4 @@
         </div>
     </div>
 </section>
-</x-app-layout>
+

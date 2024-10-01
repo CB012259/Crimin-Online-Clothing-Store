@@ -43,9 +43,9 @@
                             <td class="py-2 px-4 border-b">
                                 <a href="{{ route('products.edit', $product) }}" class="text-blue-500 hover:underline">Edit</a>
                                 <br>
-                                <form method="POST" action="{{ route('products.destroy', $product) }}" class="inline-block">
+                                <form method="POST" action="{{ route('products.destroy', $product) }}" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                     @csrf
-                                    @method('DELETE')
+                                     @method('DELETE')
 
                                     <button type="submit" class="text-red-500 hover:underline">Delete</button>
                                 </form>

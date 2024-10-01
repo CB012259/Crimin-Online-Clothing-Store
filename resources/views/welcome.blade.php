@@ -199,125 +199,87 @@
 
 
     <main class="p-6">
-        <section id="filters" class="mb-10 bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold mb-4">Filter Products</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div>
-                    <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-                    <select id="category" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="all">All</option>
-                        <option value="t-shirts">T-shirts</option>
-                        <option value="bottoms">Bottoms</option>
-                        <option value="accessories">Accessories</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="price" class="block text-sm font-medium text-gray-700">Price Range</label>
-                    <select id="price" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="all">All</option>
-                        <option value="0-25">$0 - $25</option>
-                        <option value="25-50">$25 - $50</option>
-                        <option value="50-100">$50 - $100</option>
-                        <option value="100-200">$100 - $200</option>
-                        <option value="200">$200+</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="color" class="block text-sm font-medium text-gray-700">Color</label>
-                    <select id="color" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="all">All</option>
-                        <option value="red">Red</option>
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                        <option value="black">Black</option>
-                        <option value="white">White</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="size" class="block text-sm font-medium text-gray-700">Size</label>
-                    <select id="size" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="all">All</option>
-                        <option value="s">S</option>
-                        <option value="m">M</option>
-                        <option value="l">L</option>
-                        <option value="xl">XL</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
-                    <select id="gender" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="all">All</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="unisex">Unisex</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="brand" class="block text-sm font-medium text-gray-700">Brand</label>
-                    <select id="brand" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="all">All</option>
-                        <option value="brand1">Brand 1</option>
-                        <option value="brand2">Brand 2</option>
-                        <option value="brand3">Brand 3</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="material" class="block text-sm font-medium text-gray-700">Material</label>
-                    <select id="material" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="all">All</option>
-                        <option value="cotton">Cotton</option>
-                        <option value="wool">Wool</option>
-                        <option value="polyester">Polyester</option>
-                        <option value="leather">Leather</option>
-                    </select>
-                </div>
+    <section id="product-listings" class="mb-10 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Filter Products</h2>
+        <form method="GET" action="{{ route('welcome') }}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
+                <label for="category" class="block text-sm font-medium text-gray-700">Filter by Category:</label>
+                <select id="category" name="category" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="">All</option>
+                    <option value="t-shirts">T-shirts</option>
+                    <option value="bottoms">Bottoms</option>
+                    <option value="accessories">Accessories</option>
+                </select>
             </div>
-        </section>  <!-- Existing Product Listings Section -->
+            <div>
+                <label for="size" class="block text-sm font-medium text-gray-700">Filter by Size:</label>
+                <select id="size" name="size" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="">All</option>
+                    <option value="s">S</option>
+                    <option value="m">M</option>
+                    <option value="l">L</option>
+                    <option value="xl">XL</option>
+                </select>
+            </div>
+            <div>
+                <label for="color" class="block text-sm font-medium text-gray-700">Filter by Color:</label>
+                <input type="text" id="color" name="color" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="gender" class="block text-sm font-medium text-gray-700">Filter by Gender:</label>
+                <select id="gender" name="gender" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="">All</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="unisex">Unisex</option>
+                </select>
+            </div>
+            <div>
+                <label for="brand" class="block text-sm font-medium text-gray-700">Filter by Brand:</label>
+                <input type="text" id="brand" name="brand" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="material" class="block text-sm font-medium text-gray-700">Filter by Material:</label>
+                <input type="text" id="material" name="material" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="price" class="block text-sm font-medium text-gray-700">Filter by Price:</label>
+                <select id="price" name="price" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="all">All</option>
+                    <option value="0-25">$0 - $25</option>
+                    <option value="25-50">$25 - $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-200">$100 - $200</option>
+                    <option value="200">$200+</option>
+                </select>
+            </div>
+            
+            <div class="flex items-end">
+                <button type="submit" class="mt-2 bg-black text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black-500">Filter</button>
+            </div>
+        </form>
+    </section>
     </main>
-
+        
 </header>
 
 <main class="p-6">
-    <section id="product-listings" class="mb-10">
-        <h2 class="text-2xl font-bold border-b-2 border-gray-900 pb-2 mb-4">Product Listings</h2>
-
-        <div id="t-shirts" class="bg-white p-6 rounded-lg shadow-md mb-4">
-            <h3 class="text-xl font-semibold mb-2">T-shirts</h3>
-            <p class="mb-4">Shirts, Sweaters, Jackets</p>
-            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <li class="flex items-center space-x-4" data-category="t-shirts" data-price="25-50" data-color="white" data-size="m" data-gender="unisex" data-brand="brand1" data-material="cotton">
-                    <img src="https://th.bing.com/th/id/OIG4.8s3DolygY7brMEJiLmWt?pid=ImgGn" alt="Classic T-shirt" class="w-20 h-20 rounded-lg">
-                    <span>Classic T-shirt</span>
-                </li>
-                <li class="flex items-center space-x-4" data-category="t-shirts" data-price="25-50" data-color="black" data-size="l" data-gender="male" data-brand="brand2" data-material="polyester">
-                    <img src="https://th.bing.com/th/id/OIG2.O_JTNbcNprOeIEeYEtVm?pid=ImgGn" alt="Graphic Tee" class="w-20 h-20 rounded-lg">
-                    <span>Graphic Tee</span>
-                </li>
-                <li class="flex items-center space-x-4" data-category="t-shirts" data-price="0-25" data-color="blue" data-size="m" data-gender="unisex" data-brand="brand1" data-material="cotton">
-                    <img src="https://th.bing.com/th/id/OIG3.2y4KkweVDoChoq.sPRBA?pid=ImgGn" alt="Tank Top" class="w-20 h-20 rounded-lg">
-                    <span>Tank Top</span>
-                </li>
-            </ul>
-        </div>
-
-
-    </section>
-    <section id="products" class="p-6">
+<section id="products" class="p-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    @foreach($products as $product)
-        <a href="{{ route('products.show', $product->id) }}" class="bg-white p-4 rounded-lg shadow-md block">
-        <div class="flex justify-center">
-            <img src="{{ asset('storage/' . $product->image_url) }}" class="w-48 h-60 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain rounded-t-lg">
-        </div>
-        <div class="p-4">
-                <h3 class="text-lg font-semibold">{{ $product->name }}</h3>
-                <p class="text-gray-600">{{ $product->description }}</p>
-                <p class="text-gray-900 font-bold">${{ $product->price }}</p>
-            </div>
-        </a>
-    @endforeach
-</div>
-    </section>
+        @foreach($products as $product)
+            <a href="{{ route('products.show', $product->id) }}" class="bg-white p-4 rounded-lg shadow-md block">
+                <div class="flex justify-center">
+                    <img src="{{ asset('storage/' . $product->image_url) }}" class="w-48 h-60 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain rounded-t-lg">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">{{ $product->name }}</h3>
+                    <p class="text-gray-600">{{ $product->description }}</p>
+                    <p class="text-gray-900 font-bold">${{ $product->price }}</p>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</section>
 </main>
 
 <footer class="bg-gray-900 text-white text-center p-4">

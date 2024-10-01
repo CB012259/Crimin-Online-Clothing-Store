@@ -63,3 +63,5 @@ Route::get('/', [ProductController::class, 'showWelcomePage'])->name('welcome');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+
+Route::get('/', [ProductController::class, 'welcome'])->name('welcome');
