@@ -22,85 +22,8 @@
                }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryFilter = document.getElementById('category');
-            const priceFilter = document.getElementById('price');
-
-            categoryFilter.addEventListener('change', filterProducts);
-            priceFilter.addEventListener('change', filterProducts);
-
-            function filterProducts() {
-                const category = categoryFilter.value;
-                const priceRange = priceFilter.value;
-
-                const products = document.querySelectorAll('#product-listings ul li');
-                products.forEach(product => {
-                    const productCategory = product.closest('div').id; // e.g., 't-shirts', 'bottoms'
-                    const productPrice = parseInt(product.dataset.price); // Assuming you add data-price attribute to each product item
-
-                    let categoryMatch = category === 'all' || productCategory === category;
-                    let priceMatch = false;
-
-                    switch (priceRange) {
-                        case 'all':
-                            priceMatch = true;
-                            break;
-                        case '0-25':
-                            priceMatch = productPrice <= 25;
-                            break;
-                        case '25-50':
-                            priceMatch = productPrice > 25 && productPrice <= 50;
-                            break;
-                        case '50-100':
-                            priceMatch = productPrice > 50 && productPrice <= 100;
-                            break;
-                        case '100-200':
-                            priceMatch = productPrice > 100 && productPrice <= 200;
-                            break;
-                        case '200':
-                            priceMatch = productPrice > 200;
-                            break;
-                    }
-
-                    if (categoryMatch && priceMatch) {
-                        product.style.display = '';
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-            }
-
-            // Initialize Slick Carousel
-            let currentIndex = 0;
-
-            function showSlide(index) {
-                const slides = document.querySelectorAll('.carousel-item');
-                if (index >= slides.length) {
-                    currentIndex = 0;
-                } else if (index < 0) {
-                    currentIndex = slides.length - 1;
-                } else {
-                    currentIndex = index;
-                }
-                const offset = -currentIndex * 100;
-                document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
-            }
-
-            function nextSlide() {
-                showSlide(currentIndex + 1);
-            }
-
-            function prevSlide() {
-                showSlide(currentIndex - 1);
-            }
-
-            // Auto-slide
-            setInterval(nextSlide, 3000);
-        });
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-        var menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        });
+        
+        
     </script>
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -115,20 +38,17 @@
         <!-- Logo Section -->
         <div class="flex items-center">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-20 h-16 object-contain" />
-            <ul class="hidden md:flex ml-6 text-black space-x-6">
-                <li><a href="/Customer-Support" class="hover:underline">Customer Support</a></li>
-                <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
-                <li><a href="/Size" class="hover:underline">Size Chart</a></li>
-                <li><a href="/Places" class="hover:underline">Places</a></li>
-            </ul>
+            <ul class="flex justify-center text-black space-x-6 m-4">
+            <li><a href="/Customer-Support" class="{{ request()->is('Customer-Support') ? 'underline font-bold' : 'hover:underline' }}">Customer Support</a></li>
+            <li><a href="/Size" class="{{ request()->is('Size') ? 'underline font-bold' : 'hover:underline' }}">Size Chart</a></li>
+            <li><a href="/Promotions" class="{{ request()->is('Promotions') ? 'underline font-bold' : 'hover:underline' }}">Promotions</a></li>
+            <li><a href="/Places" class="{{ request()->is('Places') ? 'underline font-bold' : 'hover:underline' }}">Places</a></li>
+        </ul>
         </div>
 
         <!-- Toggle Button and Login Section -->
         <div class="flex items-center">
-            <!-- Mobile menu toggle button -->
-            <button id="menu-toggle" class="md:hidden block focus:outline-none text-black">
-                <i class="fa fa-bars fa-lg"></i>
-            </button>
+        
 
             <!-- Login Menu -->
             @if (Route::has('login'))
@@ -166,17 +86,7 @@
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden">
-            <ul class="text-black space-y-4">
-            <ul class="flex justify-center space-x-6 m-4">
-            <li><a href="/" class="{{ request()->is('/') ? 'underline font-bold' : 'hover:underline' }}">Home</a></li>
-            <li><a href="/Customer-Support" class="{{ request()->is('Customer-Support') ? 'underline font-bold' : 'hover:underline' }}">Customer Support</a></li>
-            <li><a href="/Size" class="{{ request()->is('Size') ? 'underline font-bold' : 'hover:underline' }}">Size Chart</a></li>
-            <li><a href="/Promotions" class="{{ request()->is('Promotions') ? 'underline font-bold' : 'hover:underline' }}">Promotions</a></li>
-            <li><a href="/Places" class="{{ request()->is('Places') ? 'underline font-bold' : 'hover:underline' }}">Places</a></li>
-        </ul> 
-        </div>
+   
 </nav>
 
 
@@ -198,7 +108,14 @@
     <main class="p-6">
     <section id="product-listings" class="mb-10 bg-white p-6 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold mb-4">Filter Products</h2>
-        <form method="GET" action="{{ route('welcome') }}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Search Bar -->
+        <form method="GET" action="{{ route('products.search') }}" class="mb-6">
+            <div class="flex items-center">
+                <input type="text" name="search" placeholder="Search products..." class="w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-black focus:border-black sm:text-sm">
+                <button type="submit" class="ml-2 px-4 py-2 bg-black text-white rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">Search</button>
+            </div>
+        </form>
+        <form method="GET" action="{{ route('products.filter') }}" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
                 <label for="category" class="block text-sm font-medium text-gray-700">Filter by Category:</label>
                 <select id="category" name="category" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">

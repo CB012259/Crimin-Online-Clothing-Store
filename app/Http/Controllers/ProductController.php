@@ -189,4 +189,25 @@ public function welcome(Request $request)
 
     return view('welcome', compact('products'));
 }
+public function search(Request $request)
+{
+    $query = Product::query();
+
+    if ($request->has('search')) {
+        $query->where('name', 'like', '%' . $request->input('search') . '%')
+              ->orWhere('description', 'like', '%' . $request->input('search') . '%');
+    }
+
+    if ($request->has('category')) {
+        $query->where('category', $request->input('category'));
+    }
+
+    if ($request->has('size')) {
+        $query->where('size', $request->input('size'));
+    }
+
+    $products = $query->get();
+
+    return view('welcome', compact('products'));
+}
 }

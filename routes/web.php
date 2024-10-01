@@ -68,10 +68,11 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy'])->nam
 
 Route::get('/', [ProductController::class, 'showWelcomePage'])->name('welcome');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
-Route::get('/', [ProductController::class, 'welcome'])->name('welcome');
+Route::get('/filter', [ProductController::class, 'welcome'])->name('products.filter');
 Route::post('/questions', [CustomerSupportController::class, 'storeQuestion'])->name('questions.store');
 
 Route::post('/reviews', [CustomerSupportController::class, 'storeReview'])->name('reviews.store');
@@ -82,8 +83,8 @@ Route::delete('/subscribers/{id}', [SubscriptionController::class, 'destroy'])->
 
 
 
-Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index');
+Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index')->middleware('auth', 'admin');
 Route::get('/promotions/create', [PromotionController::class, 'create'])->name('promotions.create')->middleware('auth', 'admin');
 Route::post('/promotions', [PromotionController::class, 'store'])->name('promotions.store')->middleware('auth', 'admin');
-Route::get('/Promotions', [PromotionController::class, 'show'])->name('welcome');
+Route::get('/Promotions', [PromotionController::class, 'show'])->name('promotions.show');
 Route::delete('/promotions/{promotion}', [PromotionController::class, 'destroy'])->name('promotions.destroy')->middleware('auth', 'admin');
