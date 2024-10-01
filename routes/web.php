@@ -8,6 +8,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CustomerSupportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,7 +46,7 @@ Route::get('/users',[UserController::class,'loadAllUsers']) ->middleware('auth',
 Route::get('/add/user',[UserController::class,'loadAddUserForm']) ->middleware('auth','admin');
 
 Route::post('/add/user',[UserController::class,'AddUser'])->middleware('auth', 'admin')->name('AddUser');
-
+Route::get('/admin/questions', [AdminController::class, 'viewQuestions'])->middleware('auth', 'admin')->name('admin.questions');
 Route::get('/edit/{id}',[UserController::class,'loadEditForm'])->middleware('auth','admin');
 Route::get('/delete/{id}',[UserController::class,'deleteUser'])->middleware('auth','admin');
 
@@ -65,3 +66,4 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
 Route::get('/', [ProductController::class, 'welcome'])->name('welcome');
+Route::post('/questions', [CustomerSupportController::class, 'storeQuestion'])->name('questions.store');

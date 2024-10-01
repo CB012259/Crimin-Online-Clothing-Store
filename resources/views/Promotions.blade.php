@@ -9,10 +9,7 @@
     <nav>
         <ul class="flex justify-center space-x-6 m-4">
             <li><a href="/" class="hover:underline">Home</a></li>
-            <li><a href="#t-shirts" class="hover:underline">T-shirts</a></li>
-            <li><a href="#bottoms" class="hover:underline">Bottoms</a></li>
-            <li><a href="#accessories" class="hover:underline">Accessories</a></li>
-            <li><a href='/Customer-Support' class="hover:underline">Customer Support</a></li>
+           <li><a href='/Customer-Support' class="hover:underline">Customer Support</a></li>
             <li><a href="/Size" class="hover:underline">Size Chart</a></li>
             <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
 

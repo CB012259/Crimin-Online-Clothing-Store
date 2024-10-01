@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Question;
 use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
@@ -15,6 +16,11 @@ class AdminController extends Controller
             return view('dashboard');
         }
 
+    }
+    public function viewQuestions()
+    {
+        $questions = Question::all();
+        return view('questions', compact('questions'));
     }
 
 }

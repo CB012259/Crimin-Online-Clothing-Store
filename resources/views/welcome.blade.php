@@ -116,9 +116,6 @@
         <div class="flex items-center">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-20 h-16 object-contain" />
             <ul class="hidden md:flex ml-6 text-black space-x-6">
-                <li><a href="#t-shirts" class="hover:underline">T-shirts</a></li>
-                <li><a href="#bottoms" class="hover:underline">Bottoms</a></li>
-                <li><a href="#accessories" class="hover:underline">Accessories</a></li>
                 <li><a href="/Customer-Support" class="hover:underline">Customer Support</a></li>
                 <li><a href="/Promotions" class="hover:underline">Promotions</a></li>
                 <li><a href="/Size" class="hover:underline">Size Chart</a></li>
