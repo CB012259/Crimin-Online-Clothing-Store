@@ -59,19 +59,20 @@
 </header>
 <main class="p-9">
 <div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-        <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">Contact Information</h1>
+        <h1 class="text-3xl font-bold mb-6 text-center text-black">Contact Information</h1>
         
         <div class="mb-4">
             <h3 class="text-xl font-semibold">Email Address:</h3>
-            <p class="text-lg"><a href="mailto:support@example.com" class="text-blue-500 hover:underline">support@example.com</a></p>
+            <p class="text-lg"><a href="mailto:crimin@business.com" class="text-black hover:underline">crimin@business.com</a></p>
         </div>
 
         <div class="mb-4">
             <h3 class="text-xl font-semibold">Phone Number:</h3>
-            <p class="text-lg"><a href="tel:+1234567890" class="text-blue-500 hover:underline">+123-456-7890</a></p>
+            <p class="text-lg"><a href="tel:+1234567890" class="text-black hover:underline">+123-456-7890</a></p>
         </div>
 
         <div class="chat-container">
+        <h3 class="text-xl font-semibold">Chat with Us...</h3> 
     <div class="chatbox" id="chatbox">
         <!-- Chat messages will be appended here -->
     </div>
@@ -84,7 +85,7 @@
     </div>
 </main>
 <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-    <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">Ask Us Anything</h1>
+    <h1 class="text-3xl font-bold text-center text-black mb-8">Ask Us Anything</h1>
     
     <form method="POST" action="{{ route('questions.store') }}">
         @csrf
@@ -97,12 +98,12 @@
             <textarea id="question" name="question" rows="4" class="mt-1 block w-full text-black py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ask us anything..."></textarea>
         </div>
         <div class="flex items-end">
-            <button type="submit" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit</button>
+            <button type="submit" class="mt-2 bg-black text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit</button>
         </div>
     </form>
 </div>
 <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">Returns and Exchanges</h1>
+        <h1 class="text-3xl font-bold text-center text-black mb-8">Returns and Exchanges</h1>
         
         <!-- Return Policy -->
         <h2 class="text-2xl font-semibold text-gray-700 border-b-2 border-gray-300 pb-2">Return Policy</h2>

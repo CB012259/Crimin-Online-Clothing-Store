@@ -73,8 +73,7 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.1721187796194!2d-122.08385468505666!3d37.42199917982543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba11aaef7e29%3A0xb5ed54d79c917d7b!2s123%20Main%20St!5e0!3m2!1sen!2sus!4v1630245613798!5m2!1sen!2sus" 
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="w-full"></iframe>
             </div>
-            <img src="images/store1.jpg" alt="Main Street Store" class="w-full h-auto rounded-lg shadow-md">
-        </div>
+             </div>
 
         <div class="mb-8 bg-white p-4 rounded shadow">
             <h3 class="text-xl font-semibold text-gray-800 mb-2">Location 2: Elm Street Store</h3>
@@ -83,8 +82,7 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.6765077846695!2d-122.424113584681!3d37.77492977975692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085818f33d1a5ff%3A0x5ec0e56f1b9c25ee!2s456%20Elm%20St!5e0!3m2!1sen!2sus!4v1630245629383!5m2!1sen!2sus" 
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="w-full"></iframe>
             </div>
-            <img src="images/store2.jpg" alt="Elm Street Store" class="w-full h-auto rounded-lg shadow-md">
-        </div>
+             </div>
 
         <h2 class="text-2xl font-semibold text-gray-700 mb-2">Delivery Methods</h2>
         <p class="mb-4">

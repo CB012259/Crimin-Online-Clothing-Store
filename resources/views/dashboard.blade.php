@@ -16,6 +16,7 @@
         <a href="{{ route('cart') }}" class="text-black hover:text-white hover:bg-black px-3 py-2 rounded-md transition duration-300">
                             View Cart
                         </a>
+        
     </x-slot>
 
     

@@ -12,6 +12,7 @@ use App\Http\Controllers\CustomerSupportController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\PurchaseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -83,8 +84,14 @@ Route::delete('/subscribers/{id}', [SubscriptionController::class, 'destroy'])->
 
 
 
+
 Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index')->middleware('auth', 'admin');
 Route::get('/promotions/create', [PromotionController::class, 'create'])->name('promotions.create')->middleware('auth', 'admin');
 Route::post('/promotions', [PromotionController::class, 'store'])->name('promotions.store')->middleware('auth', 'admin');
 Route::get('/Promotions', [PromotionController::class, 'show'])->name('promotions.show');
 Route::delete('/promotions/{promotion}', [PromotionController::class, 'destroy'])->name('promotions.destroy')->middleware('auth', 'admin');
+
+
+
+Route::get('/purchase', [PurchaseController::class, 'show'])->name('purchase.show');
+Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase.store');

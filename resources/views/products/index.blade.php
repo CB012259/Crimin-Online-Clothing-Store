@@ -12,7 +12,7 @@
                 <h1 class="text-3xl font-bold mb-4">Products</h1>
 
                 <p>
-                    <a href="{{ route('products.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Create Product</a>
+                    <a href="{{ route('products.create') }}" class="inline-block bg-black text-white px-4 py-2 rounded hover:bg-blue-600">Create Product</a>
                 </p>
 
                 <table class="min-w-full bg-white border border-gray-200 mt-4">

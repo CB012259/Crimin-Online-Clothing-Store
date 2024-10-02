@@ -46,6 +46,7 @@
                     <option value="m">M</option>
                     <option value="l">L</option>
                     <option value="xl">XL</option>
+                    <option value="xxl">XXL</option>
                 </select>
             </div>
             <div class="mb-4">
@@ -86,7 +87,7 @@
             </div>
             <div class="flex items-center">
                 <button type="submit"
-                        class="inline-block bg-blue-500 text-black px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        class="inline-block bg-black text-black px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                     Create
                 </button>
 
