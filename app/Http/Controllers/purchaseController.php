@@ -16,13 +16,18 @@ class purchaseController extends Controller
         if (!$product) {
             return back()->withErrors('Product not found.');
         }
-
+        $productname = $product->name;
         $amount = $product->price;
         $quantity = $request->quantity ?? 1; // Default quantity is 1
         $netAmount = $amount * $quantity;
 
-        return view('purchase', ['amount' => $amount, 'netAmount' => $netAmount, 'quantity' => $quantity]);
-    } 
+        return view('purchase', [
+            'amount' => $amount,
+            'netAmount' => $netAmount,
+            'quantity' => $quantity,
+            'productname' => $productname
+        ]);
+       } 
 
     public function store(Request $request)
     {
@@ -33,7 +38,7 @@ class purchaseController extends Controller
         if ($amount < 1) {
             return back()->withErrors('The amount must be at least $0.01.');
         }
-
+        
         try {
             $charge = Charge::create([
                 'amount' => $amount,

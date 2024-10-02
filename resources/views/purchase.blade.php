@@ -15,7 +15,7 @@
             @csrf
             <div class="text-center">
                         <input type="hidden" name="amount" id="amount"  value="{{ $netAmount }}">
-                        
+                        <p>{{ $productname }}</p>
                         <p class="text-lg font-semibold text-gray-700">Amount: <span class="font-bold" id="netAmountDisplay">{{ $netAmount }}</span></p>
                        
                 <p class="text-lg text-gray-600">Quantity: <span class="font-bold"> {{ $quantity }}</span></p>
