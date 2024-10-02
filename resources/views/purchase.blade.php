@@ -14,9 +14,10 @@
         <form action="{{ route('purchase.store') }}" method="POST" id="payment-form" class="space-y-4">
             @csrf
             <div class="text-center">
-                        <input type="number" name="amount" id="amount" min="0.01" step="0.01" required>
+                        <input type="hidden" name="amount" id="amount"  value="{{ $netAmount }}">
+                        
                         <p class="text-lg font-semibold text-gray-700">Amount: <span class="font-bold" id="netAmountDisplay">{{ $netAmount }}</span></p>
-       
+                       
                 <p class="text-lg text-gray-600">Quantity: <span class="font-bold"> {{ $quantity }}</span></p>
             </div>
 
