@@ -97,6 +97,3 @@ Route::get('/purchase', [purchaseController::class, 'show'])->name('purchase.sho
 Route::post('/purchase', [purchaseController::class, 'store'])->name('purchase.store');
 Route::get('/success', [purchaseController::class, 'success'])->name('success');
 
-Route::get('/render-welcome', function () {
-    return view('welcome');
-});
