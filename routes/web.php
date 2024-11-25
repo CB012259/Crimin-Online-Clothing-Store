@@ -96,3 +96,7 @@ Route::delete('/promotions/{promotion}', [PromotionController::class, 'destroy']
 Route::get('/purchase', [purchaseController::class, 'show'])->name('purchase.show');
 Route::post('/purchase', [purchaseController::class, 'store'])->name('purchase.store');
 Route::get('/success', [purchaseController::class, 'success'])->name('success');
+
+Route::get('/render-welcome', function () {
+    return view('welcome');
+});
